@@ -66,7 +66,7 @@ export const Auth = () => {
                   <Input
                     type="text"
                     placeholder="First Name"
-                    name="first-name"
+                    name="first_name"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     required
@@ -74,7 +74,7 @@ export const Auth = () => {
                   <Input
                     type="text"
                     placeholder="Last Name"
-                    name="last-name"
+                    name="last_name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     required
