@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // src/services/api.ts
-export const BASE_URL = "http://192.168.1.9:8000/api";
+export const BASE_URL = "http://api.ibadah.xyz/api";
 
 // ========== AUTH ========== //
 export async function login(username: string, password: string) {
