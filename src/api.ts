@@ -28,7 +28,7 @@ export async function register(
   const res = await fetch(`${BASE_URL}/auth/register/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password, first_name, last_name, phone }),
+    body: JSON.stringify({ first_name, last_name, phone, username, password }),
   });
 
   if (!res.ok) {
