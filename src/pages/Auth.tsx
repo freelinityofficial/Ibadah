@@ -32,14 +32,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       navigate("/dashboard");
     } else {
       // send correct data
-      const data = await register({
-        first_name: firstName,
-        last_name: lastName,
-        phone,
-        username,
-        password,
-      });
-      console.log(data); // debug to see what backend returns
+      await register(firstName, lastName, phone, username, password);
       alert("Account created ✅, now please log in.");
       setIsLogin(true);
     }
