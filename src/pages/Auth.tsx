@@ -17,28 +17,36 @@ export const Auth = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setError("");
 
-    try {
-      if (isLogin) {
-        const data = await login(username, password);
-        localStorage.setItem("access", data.access);
-        localStorage.setItem("refresh", data.refresh);
-        localStorage.setItem("username", username);
-        localStorage.setItem("userId", data.user.id);
-        alert("Login successful ✅");
-        navigate("/dashboard");
-      } else {
-        await register(firstName, lastName, phone, username, password);
-        alert("Account created ✅, now please log in.");
-        setIsLogin(true);
-      }
-    } catch (err: any) {
-      setError(err.message);
+  try {
+    if (isLogin) {
+      const data = await login(username, password);
+      localStorage.setItem("access", data.access);
+      localStorage.setItem("refresh", data.refresh);
+      localStorage.setItem("username", username);
+      localStorage.setItem("userId", data.user.id);
+      alert("Login successful ✅");
+      navigate("/dashboard");
+    } else {
+      // send correct data
+      const data = await register({
+        first_name: firstName,
+        last_name: lastName,
+        phone,
+        username,
+        password,
+      });
+      console.log(data); // debug to see what backend returns
+      alert("Account created ✅, now please log in.");
+      setIsLogin(true);
     }
-  };
+  } catch (err: any) {
+    setError(err.message);
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
